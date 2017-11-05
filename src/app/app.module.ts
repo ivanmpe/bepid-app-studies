@@ -11,7 +11,8 @@ import { QuestaoPage } from '../pages/questao/questao';
 
 import { AngularFireDatabase } from 'angularfire2/database';
 import {AngularFireModule} from 'angularfire2';
-import { AngularFireAuth } from 'angularfire2/auth';
+//import { AngularFireAuth } from 'angularfire2/auth';
+import { GabaritoProvider } from '../providers/gabarito/gabarito.service';
 
 
 var config = {
@@ -46,7 +47,9 @@ var config = {
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    AngularFireDatabase,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    GabaritoProvider
   ]
 })
 export class AppModule {}

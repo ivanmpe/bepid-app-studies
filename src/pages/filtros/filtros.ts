@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-
-
 import { QuestaoPage} from '../questao/questao';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { GabaritoProvider } from '../../providers/gabarito/gabarito.service';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * Generated class for the FiltrosPage page.
@@ -19,16 +19,20 @@ import { QuestaoPage} from '../questao/questao';
 })
 export class FiltrosPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-
+  constructor(public navCtrl: NavController, public navParams: NavParams, database : AngularFireDatabase, public gabarito: GabaritoProvider) {
 
   }
-  array = [];
+
+
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FiltrosPage');
   }
 
+
+  array = [];
+  questoes: Observable<any>;
   logica: boolean;
   poo: boolean;
   estruturaDeDados: boolean;
@@ -36,6 +40,7 @@ export class FiltrosPage {
   swift: boolean;
   java: boolean;
   c: boolean;
+  database: AngularFireDatabase;
 
 
    testeLogica() {
@@ -43,7 +48,7 @@ export class FiltrosPage {
           this.array.push("1")
           console.log('add ' + 1);
     } else {
-        this.array.splice(this.array.indexOf("1"),1);
+        this.array.splice(this.array.indexOf("1"));
         console.log(this.array);
      }
    }
@@ -53,7 +58,7 @@ export class FiltrosPage {
     testePoo() {
       if(this.poo){
            this.array.push("2")
-           console.log('add ' + "2");
+           console.log('add ' + 2);
            console.log(this.array);
 
       } else {
@@ -65,7 +70,7 @@ export class FiltrosPage {
    testeEstruturada() {
      if(this.estruturada){
           this.array.push("3")
-          console.log('add ' + "3");
+          console.log('add ' + 3);
           console.log(this.array);
 
     } else {
@@ -78,7 +83,7 @@ export class FiltrosPage {
    testeEstrutura() {
      if(this.estruturaDeDados){
           this.array.push("4")
-          console.log('add ' + "4");
+          console.log('add ' + 4);
           console.log(this.array);
 
     } else {
@@ -90,7 +95,7 @@ export class FiltrosPage {
    testeJava() {
      if(this.java){
           this.array.push("5")
-          console.log('add ' + "5");
+          console.log('add ' + 5);
           console.log(this.array);
 
     } else {
@@ -102,7 +107,7 @@ export class FiltrosPage {
    testeSwift() {
      if(this.swift){
           this.array.push("6")
-          console.log('add ' + "6");
+          console.log('add ' + 6);
           console.log(this.array);
 
     } else {
@@ -115,7 +120,7 @@ export class FiltrosPage {
      if(this.c){
           this.array.push("7")
           console.log(this.array);
-          console.log('add ' + "7");
+          console.log('add ' + 7);
     } else {
         this.array.splice(this.array.indexOf("7"),1);
         console.log(this.array);
@@ -123,8 +128,25 @@ export class FiltrosPage {
    }
 
 
+   geraGabarito(){
+     var refItem = this.database.object("questoes");
+     refItem.snapshotChanges([])
+     .subscribe( filhos => {
+       filhos.forEach( filho => {
+        // if(filho.payload.val().tipo === "2"){
+          // this.alimento.setAlimentoKey(filho.key);
+           console.log(filho.payload.val());
+         //}
+       });
+     });
+    }
 
-  questao(){
-     this.navCtrl.push(QuestaoPage);
-  }
+
+
+    questao(){
+        this.geraGabarito();
+        this.navCtrl.push(QuestaoPage);
+     }
+
+
 }
