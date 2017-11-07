@@ -11,20 +11,17 @@ import 'rxjs/add/operator/map';
 export class GabaritoProvider {
 
   constructor() {
-    console.log('Hello GabaritoProvider Provider');
   }
-  
+  arrayQuestoes = [];
   arrayGabarito = [];
 
-  addGabarito(questao: string){
-    this.arrayGabarito.push(questao);
+  addQuestao(questao: string ){
+    this.arrayQuestoes.push(questao);
   }
 
-  removeGabarito( questao: string){
-      this.arrayGabarito.splice(this.arrayGabarito.indexOf(questao));
+  addGabarito(resposta: string){
+    this.arrayGabarito.push(resposta);
   }
-
-
 
 
 
