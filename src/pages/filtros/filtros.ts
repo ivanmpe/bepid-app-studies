@@ -4,6 +4,7 @@ import { QuestaoPage} from '../questao/questao';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { GabaritoProvider } from '../../providers/gabarito/gabarito.service';
 import { Observable } from 'rxjs/Observable';
+
 /**
  * Generated class for the FiltrosPage page.
  *
@@ -19,8 +20,7 @@ import { Observable } from 'rxjs/Observable';
 export class FiltrosPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, database : AngularFireDatabase, public gabarito: GabaritoProvider) {
-     this.questoes = database.list("questoes/").valueChanges();
-     console.log('questao');
+      this.questoes = database.list('questoes').valueChanges()
   }
 
 
@@ -30,7 +30,7 @@ export class FiltrosPage {
     console.log('ionViewDidLoad FiltrosPage');
   }
 
-  itemsRef: AngularFireList<any>;
+
   array = [];
   questoes: Observable<any>;
   logica: boolean;
@@ -129,16 +129,13 @@ export class FiltrosPage {
 
 
    geraGabarito(){
-     var database: AngularFireDatabase;
-     this.itemsRef = database.list('questoes/' + '2');
-     this.itemsRef.snapshotChanges(['child_added'])
- .   subscribe(actions => {
-   actions.forEach(action => {
-     console.log(action.type);
-     console.log(action.key);
-     console.log(action.payload.val());
-   });
- });
+     var i= 0;
+     this.questoes.subscribe(item => {
+
+
+          console.log('Item: ' +  item[1].tipo + ' enunciado ' + item[1].enunciado);
+
+      });
 
    }
 

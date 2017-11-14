@@ -15,8 +15,10 @@
 
 <ion-content padding class="filtros-background">
 
-
-  <ion-list radio-group >
+<ion-list *ngFor="let q of questoes | async" >
+  <ion-item> {{q.enunciado}}</ion-item>
+</ion-list>  
+  <ion-list no-lines radio-group >
 
   <ion-label> Selecione os conteúdos da prova </ion-label>
   <ion-item class="filtros-background">

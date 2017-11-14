@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Observable';
 
 /*
   Generated class for the GabaritoProvider provider.
@@ -15,8 +16,11 @@ export class GabaritoProvider {
   arrayQuestoes = [];
   arrayGabarito = [];
 
-  addQuestao(questao: string ){
+  addQuestao(questao: Observable<any> ){
     this.arrayQuestoes.push(questao);
+  }
+  getQuestoes(){
+    return this.arrayQuestoes[1];
   }
 
   addGabarito(resposta: string){
