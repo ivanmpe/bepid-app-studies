@@ -14,14 +14,23 @@ page-questao {
 .questao-item{
   background-color: #353535;
   color: white;
+  text-overflow: clip;
 }
 
+
+
+.full-text{
+  white-space: initial;
+}
 .button-voltar{
     background-color: #c62828;
     width: 20%;
     left: 0%;
     border-radius: 50px;
 
+}
+.text-item{
+  text-overflow: clip;
 }
 
 .button-proximo{

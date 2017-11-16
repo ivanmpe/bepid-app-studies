@@ -19,8 +19,9 @@ import { Observable } from 'rxjs/Observable';
 })
 export class FiltrosPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, database : AngularFireDatabase, public gabarito: GabaritoProvider) {
-      this.questoes = database.list('questoes').valueChanges()
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+     public database : AngularFireDatabase, public gabarito: GabaritoProvider) {
+       this.questoes = database.list('questoes').valueChanges();
   }
 
 
@@ -31,7 +32,8 @@ export class FiltrosPage {
   }
 
 
-  array = [];
+
+  arrayFiltros = [];
   questoes: Observable<any>;
   logica: boolean;
   poo: boolean;
@@ -40,16 +42,16 @@ export class FiltrosPage {
   swift: boolean;
   java: boolean;
   c: boolean;
-  database: AngularFireDatabase;
+  //database: AngularFireDatabase;
 
 
    testeLogica() {
      if(this.logica){
-          this.array.push("1")
+          this.arrayFiltros.push("1")
           console.log('add ' + 1);
     } else {
-        this.array.splice(this.array.indexOf("1"));
-        console.log(this.array);
+        this.arrayFiltros.splice(this.arrayFiltros.indexOf("1"),1);
+        console.log(this.arrayFiltros);
      }
    }
 
@@ -57,88 +59,92 @@ export class FiltrosPage {
 
     testePoo() {
       if(this.poo){
-           this.array.push("2")
+           this.arrayFiltros.push("2")
            console.log('add ' + 2);
-           console.log(this.array);
-
       } else {
-         this.array.splice(this.array.indexOf("2"),1);
-         console.log(this.array);
+         this.arrayFiltros.splice(this.arrayFiltros.indexOf("2"),1);
+         console.log(this.arrayFiltros);
       }
   }
 
    testeEstruturada() {
      if(this.estruturada){
-          this.array.push("3")
+          this.arrayFiltros.push("3")
           console.log('add ' + 3);
-          console.log(this.array);
+          console.log(this.arrayFiltros);
 
     } else {
-        this.array.splice(this.array.indexOf("3"),1);
-        console.log(this.array);
+        this.arrayFiltros.splice(this.arrayFiltros.indexOf("3"),1);
+        console.log(this.arrayFiltros);
      }
   }
 
 
    testeEstrutura() {
      if(this.estruturaDeDados){
-          this.array.push("4")
+          this.arrayFiltros.push("4")
           console.log('add ' + 4);
-          console.log(this.array);
 
     } else {
-        this.array.splice(this.array.indexOf("4"),1);
-        console.log(this.array);
+        this.arrayFiltros.splice(this.arrayFiltros.indexOf("4"),1);
+        console.log(this.arrayFiltros);
      }
    }
 
    testeJava() {
      if(this.java){
-          this.array.push("5")
+          this.arrayFiltros.push("5")
           console.log('add ' + 5);
-          console.log(this.array);
+          console.log(this.arrayFiltros);
 
     } else {
-        this.array.splice(this.array.indexOf("5"),1);
-        console.log(this.array);
+        this.arrayFiltros.splice(this.arrayFiltros.indexOf("5"),1);
+        console.log(this.arrayFiltros);
      }
    }
 
    testeSwift() {
      if(this.swift){
-          this.array.push("6")
+          this.arrayFiltros.push("6")
           console.log('add ' + 6);
-          console.log(this.array);
+          console.log(this.arrayFiltros);
 
     } else {
-        this.array.splice(this.array.indexOf("6"),1);
-        console.log(this.array);
+        this.arrayFiltros.splice(this.arrayFiltros.indexOf("6"),1);
+        console.log(this.arrayFiltros);
      }
    }
 
    testeC() {
      if(this.c){
-          this.array.push("7")
-          console.log(this.array);
+          this.arrayFiltros.push("7")
+          console.log(this.arrayFiltros);
           console.log('add ' + 7);
     } else {
-        this.array.splice(this.array.indexOf("7"),1);
-        console.log(this.array);
+        this.arrayFiltros.splice(this.arrayFiltros.indexOf("7"),1);
+        console.log(this.arrayFiltros);
      }
    }
 
 
    geraGabarito(){
-     var i= 0;
-     this.questoes.subscribe(item => {
+     var i: number;
+      var refItem = this.database.list("/questoes" );
+          refItem.snapshotChanges([])
+            .subscribe( filhos => {
+              filhos.forEach( filho => {
+                for(i=0; i< this.arrayFiltros.length; i++){
+                  if( this.arrayFiltros[i] == filho.payload.val().tipo){
+                    console.log(filho.key);
+                    this.gabarito.addKeyQuestoes(filho.key);
+                    //vou icrementando a quantidade de questoes
+                    this.gabarito.addGabarito(filho.payload.val().resposta)
+                  }
+                }
+              });
+            });
 
-
-          console.log('Item: ' +  item[1].tipo + ' enunciado ' + item[1].enunciado);
-
-      });
-
-   }
-
+    }
 
 
     questao(){

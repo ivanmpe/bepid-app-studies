@@ -12,21 +12,20 @@ import { Observable } from 'rxjs/Observable';
 export class GabaritoProvider {
 
   constructor() {
-  }
-  arrayQuestoes = [];
-  arrayGabarito = [];
 
-  addQuestao(questao: Observable<any> ){
-    this.arrayQuestoes.push(questao);
   }
-  getQuestoes(){
-    return this.arrayQuestoes[1];
-  }
+
+  arrayKeyQuestoes = [];
+  arrayGabarito = [];
 
   addGabarito(resposta: string){
     this.arrayGabarito.push(resposta);
   }
 
+  addKeyQuestoes(key: string ){
+    this.arrayKeyQuestoes.push(key);
+    console.log(key)
+  }
 
 
 

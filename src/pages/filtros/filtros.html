@@ -15,35 +15,33 @@
 
 <ion-content padding class="filtros-background">
 
-<ion-list *ngFor="let q of questoes | async" >
-  <ion-item> {{q.enunciado}}</ion-item>
-</ion-list>  
+
   <ion-list no-lines radio-group >
 
   <ion-label> Selecione os conteúdos da prova </ion-label>
   <ion-item class="filtros-background">
     <ion-label>Lógica</ion-label>
-    <ion-checkbox [(ngModel)]="logica" (ionChange)="testeLogica()" color="primary"  ></ion-checkbox>
+    <ion-checkbox [(ngModel)]="logica" (ionChange)="testeLogica()" color="primary"   ></ion-checkbox>
   </ion-item>
 
   <ion-item class="filtros-background">
     <ion-label> Orientação a Objetos </ion-label>
-    <ion-checkbox color="primary" [(ngModel)]="poo" (ionChange)="testePoo()"  value="2"></ion-checkbox>
+    <ion-checkbox color="primary" [(ngModel)]="poo" (ionChange)="testePoo()" ></ion-checkbox>
   </ion-item>
 
   <ion-item class="filtros-background">
     <ion-label>Programação Estruturada </ion-label>
-    <ion-checkbox color="primary" [(ngModel)]="estruturada" (ionChange)="testeEstruturada()"  value="3" ></ion-checkbox>
+    <ion-checkbox color="primary" [(ngModel)]="estruturada" (ionChange)="testeEstruturada()"   ></ion-checkbox>
   </ion-item>
 
   <ion-item class="filtros-background">
     <ion-label> Estrutura de Dados </ion-label>
-    <ion-checkbox color="primary" [(ngModel)]="estruturaDeDados" (ionChange)="testeEstrutura()"  value="4" ></ion-checkbox>
+    <ion-checkbox color="primary" [(ngModel)]="estruturaDeDados" (ionChange)="testeEstrutura()"></ion-checkbox>
   </ion-item>
 
   <ion-item class="filtros-background">
     <ion-label> Linguagem Java </ion-label>
-    <ion-checkbox color="primary" [(ngModel)]="java" (ionChange)="testeJava()"  value="5"></ion-checkbox>
+    <ion-checkbox color="primary" [(ngModel)]="java" (ionChange)="testeJava()"  ></ion-checkbox>
   </ion-item>
 
   <ion-item class="filtros-background">
@@ -53,7 +51,7 @@
 
   <ion-item class="filtros-background">
     <ion-label>Linguagem C </ion-label>
-    <ion-checkbox color="primary" [(ngModel)]="c" (ionChange)="testeC()"  value="7"></ion-checkbox>
+    <ion-checkbox color="primary" [(ngModel)]="c" (ionChange)="testeC()" ></ion-checkbox>
   </ion-item>
 </ion-list>
 

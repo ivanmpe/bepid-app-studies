@@ -14,31 +14,31 @@
 
 
 <ion-content padding class="questao-background">
-  <p class="text">Em um programa orientado a objetos, verifica-se que a classe X estende a classe Y.
-    Ou seja, pode-se afirmar, pelos preceitos da POO (Programação Orientada a Objetos), que: </p>
 
-  <ion-list no-lines radio-group class="questao-item">
+
+  <ion-list no-lines radio-group class="questao-item" >
+    <ion-label class= "full-text" > {{enunciado}} </ion-label>
 
     <ion-item class="questao-item">
-      <ion-label> a. A classe X é superclasse de Y</ion-label>
+      <ion-label class= "full-text" > a. {{a}}</ion-label>
       <ion-radio value="a">  </ion-radio>
     </ion-item>
 
     <ion-item class="questao-item">
-      <ion-label> b. A classe X é uma interface de Y</ion-label>
+      <ion-label class= "full-text" > b.{{b}}</ion-label>
       <ion-radio value="b">  </ion-radio>
     </ion-item>
 
     <ion-item class="questao-item">
-      <ion-label > c.  A classe Y é derivada de X  </ion-label>
+      <ion-label class= "full-text"> c.  {{c}} </ion-label>
       <ion-radio value="c"></ion-radio>
     </ion-item>
     <ion-item class="questao-item">
-      <ion-label> d. A classe Y é subclasse de X </ion-label>
+      <ion-label class= "full-text" > d. {{d}}</ion-label>
       <ion-radio value="d"></ion-radio>
     </ion-item>
     <ion-item class="questao-item">
-      <ion-label> e. A classe Y é subclasse de X  </ion-label>
+      <ion-label class= "full-text"> e. {{e}} </ion-label>
       <ion-radio value="e"></ion-radio>
     </ion-item>
   </ion-list>
