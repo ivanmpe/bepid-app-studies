@@ -6,8 +6,8 @@
 -->
 <ion-header>
 
-  <ion-navbar color="primary">
-    <ion-title> Questao 1</ion-title>
+  <ion-navbar color="primary" hideBackButton="true">
+    <ion-title> Questao {{numeroQuestao}} de {{totalQuestoes}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -17,6 +17,8 @@
 
 
   <ion-list no-lines radio-group class="questao-item" >
+
+
     <ion-label class= "full-text" > {{enunciado}} </ion-label>
 
     <ion-item class="questao-item">
@@ -43,9 +45,13 @@
     </ion-item>
   </ion-list>
 
-    <button ion-button class="button-voltar" > <ion-icon name="arrow-back" color="white"> </ion-icon> </button>
+    <button ion-button class="button-voltar" (click)="anteriorQuestao()" > <ion-icon name="arrow-back" color="white"> </ion-icon> </button>
 
-    <button ion-button class="button-proximo" > <ion-icon name="arrow-forward" color="white"> </ion-icon> </button>
+    <button ion-button class="button-proximo" (click)="proximaQuestao()" > <ion-icon name="arrow-forward" color="white"> </ion-icon> </button>
+
     <br>
     <br>
+    <button ion-button class="button-descartar" (click)="descartar()"> Descartar Simulado </button>
+
+
 </ion-content>

@@ -7,12 +7,19 @@ page-home {
   color: #353535;
 }
 
+.div-center{
+
+
+  position: relative;
+  top: 50%;
+  //height: 5%;
+
+}
+
 .home-button{
   background-color: #353535;
   color: white;
   border-radius: 20px;
-  position: absolute;
-  top: 50%;
-  height: 5%;
-  width: 90%;
+  height: 30px;
+  width: 100%;
 }

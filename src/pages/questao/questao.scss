@@ -21,14 +21,24 @@ page-questao {
 
 .full-text{
   white-space: initial;
+  text-align: justify;
 }
 .button-voltar{
     background-color: #c62828;
     width: 20%;
+    height: 30px;
     left: 0%;
     border-radius: 50px;
 
 }
+
+.button-descartar{
+    width: 100%;
+    height: 30px;
+    border-radius: 20px;
+
+}
+
 .text-item{
   text-overflow: clip;
 }
@@ -37,5 +47,6 @@ page-questao {
     background-color: #2e7d32;
     width: 20%;
     left: 58%;
+    height: 30px;
     border-radius: 50px;
 }

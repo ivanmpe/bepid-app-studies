@@ -15,17 +15,23 @@ export class GabaritoProvider {
 
   }
 
-  arrayKeyQuestoes = [];
-  arrayGabarito = [];
+  private arrayKeyQuestoes = [];
+  private qtdeQuestoes: number;
 
-  addGabarito(resposta: string){
-    this.arrayGabarito.push(resposta);
+  getQtdeQuestoes(){
+    return this.qtdeQuestoes;
+  }
+  setQtdeQuestoes(n:number){
+      this.qtdeQuestoes = n;
   }
 
-  addKeyQuestoes(key: string ){
+  addArrayKeys(key: string){
     this.arrayKeyQuestoes.push(key);
-    console.log(key)
   }
+  getArrayKeys(){
+    return this.arrayKeyQuestoes
+  }
+
 
 
 

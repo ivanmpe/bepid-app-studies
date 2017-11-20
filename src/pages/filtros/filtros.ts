@@ -4,6 +4,8 @@ import { QuestaoPage} from '../questao/questao';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { GabaritoProvider } from '../../providers/gabarito/gabarito.service';
 import { Observable } from 'rxjs/Observable';
+import { ToastController } from 'ionic-angular';
+
 
 /**
  * Generated class for the FiltrosPage page.
@@ -20,8 +22,9 @@ import { Observable } from 'rxjs/Observable';
 export class FiltrosPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-     public database : AngularFireDatabase, public gabarito: GabaritoProvider) {
+     public database : AngularFireDatabase, public gabarito: GabaritoProvider, public toastCtrl: ToastController) {
        this.questoes = database.list('questoes').valueChanges();
+
   }
 
 
@@ -33,6 +36,8 @@ export class FiltrosPage {
 
 
 
+
+  refItem = this.database.list('questoes')
   arrayFiltros = [];
   questoes: Observable<any>;
   logica: boolean;
@@ -42,9 +47,10 @@ export class FiltrosPage {
   swift: boolean;
   java: boolean;
   c: boolean;
-  //database: AngularFireDatabase;
+  refBD: AngularFireDatabase;
 
 
+  //Funcoes de Filtros
    testeLogica() {
      if(this.logica){
           this.arrayFiltros.push("1")
@@ -127,29 +133,72 @@ export class FiltrosPage {
    }
 
 
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////
+
+   presentToast( msg: string) {
+        let toast = this.toastCtrl.create({
+          message: msg,
+          duration: 2000
+        });
+        toast.present();
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+
+
    geraGabarito(){
+
+     console.log(this.arrayFiltros.length + 'filtros' )
+
      var i: number;
-      var refItem = this.database.list("/questoes" );
-          refItem.snapshotChanges([])
-            .subscribe( filhos => {
-              filhos.forEach( filho => {
-                for(i=0; i< this.arrayFiltros.length; i++){
-                  if( this.arrayFiltros[i] == filho.payload.val().tipo){
-                    console.log(filho.key);
-                    this.gabarito.addKeyQuestoes(filho.key);
-                    //vou icrementando a quantidade de questoes
-                    this.gabarito.addGabarito(filho.payload.val().resposta)
-                  }
-                }
-              });
-            });
+      var refItem = this.database.list('questoes');
+              refItem.snapshotChanges([])
+                .subscribe( filhos => {
+                  filhos.forEach( filho => {
+                  //  if(filho.payload.val().tipo == 1 ){
+                  for(i=0; i< this.arrayFiltros.length; i++){
+                    if( this.arrayFiltros[i] == filho.payload.val().tipo){
+                        this.gabarito.addArrayKeys(filho.key);
+              //          console.log(filho.key);
+                      }
+                    }
+                  });
+                  console.log(this.gabarito.getArrayKeys().length + ' elementos')
+                  this.navCtrl.push(QuestaoPage)
+                });
 
     }
 
+////////////////////////////////////////////////////////////////////////////////
 
     questao(){
-        this.geraGabarito();
-        this.navCtrl.push(QuestaoPage);
+
+        if(this.arrayFiltros.length != 0) {
+            this.geraGabarito();
+        } else{
+          this.presentToast('Você precisa escolher pelo menos 1 dos filtros. ')
+        }
+
+
+
      }
 
 
