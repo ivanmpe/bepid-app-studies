@@ -5,7 +5,7 @@ import { GabaritoProvider } from '../../providers/gabarito/gabarito.service';
 import { Observable } from 'rxjs/Observable';
 import { App} from 'ionic-angular';
 import { HomePage } from '../home/home';
-
+import { ResultadoPage } from '../resultado/resultado';
 
 
 
@@ -23,11 +23,26 @@ import { HomePage } from '../home/home';
 })
 export class QuestaoPage {
 
+
+  totalQuestoes: number;
+  index: number = 0;
+  numeroQuestao: number = 1;
+  enunciado: string;
+  a: string;
+  b: string;
+  c: string;
+  d: string;
+  e: string;
+  final = false;
+  resposta: string;
+  respostaCorreta: string;
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
      public database : AngularFireDatabase, public gabarito: GabaritoProvider,  private app: App) {
-       this.totalQuestoes = this.gabarito.getArrayKeys().length;
 
+       this.totalQuestoes = this.gabarito.getArrayKeys().length;
        this.questao();
+
   }
 
   ionViewDidLoad() {
@@ -51,8 +66,6 @@ export class QuestaoPage {
                 this.d = filho.payload.val().d;
                 this.e = filho.payload.val().e;
                 this.respostaCorreta = filho.payload.val().resposta;
-                //console.log(filho.key);
-
               }
               //}
             });
@@ -60,25 +73,52 @@ export class QuestaoPage {
   }
 
 
+//////////////////////////////////////////////////////
+
+
+
+respostaMarcada(r: string){
+  console.log(r);
+  this.resposta = r;
+}
+
+
+////////////////////////////////////////////////////////
   proximaQuestao(){
-    if( this.numeroQuestao < this.totalQuestoes-1){
+
+    if(this.resposta == this.respostaCorreta){
+        this.gabarito.setQtdeAcertos(this.gabarito.getQtdeAcertos()+1);
+    }
+
+
+    if( this.numeroQuestao < this.totalQuestoes){
       this.index = this.index + 1;
       this.numeroQuestao = this.numeroQuestao + 1;
-      //this.gabarito.getArrayKeys().pop();
       this.questao();
+      if( this.numeroQuestao == this.totalQuestoes) {
+          this.final = true;
+      }
     }
   }
 
   anteriorQuestao(){
-    if( this.numeroQuestao > 0){
+    if( this.numeroQuestao > 1){
       this.index= this.index - 1;
       this.numeroQuestao = this.numeroQuestao - 1;
-      //this.gabarito.getArrayKeys().pop();
+      this.gabarito.setQtdeAcertos(this.gabarito.getQtdeAcertos()-1);
+
       this.questao();
+
+      this.final = false;
     }
   }
 
-
+  resultado(){
+    if(this.resposta == this.respostaCorreta){
+        this.gabarito.setQtdeAcertos(this.gabarito.getQtdeAcertos()+1);
+    }
+    this.navCtrl.push(ResultadoPage);
+  }
 
   descartar(){
 
@@ -90,16 +130,6 @@ export class QuestaoPage {
   }
 
 
-  totalQuestoes: number;
-  index:number = 0;
-  numeroQuestao: number = 1;
-  enunciado: string;
-  a: string;
-  b: string;
-  c: string;
-  d: string;
-  e: string;
-  respostaCorreta: string;
 
 
 

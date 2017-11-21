@@ -1,3 +1,30 @@
 page-resultado {
 
 }
+.resultado-background{
+  color: white;
+  background-color: #353535
+
+}
+
+.text-resultado{
+
+  text-align: center;
+  color: black;
+  font-weight: bold;
+
+}
+.div-resultado{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 90%;
+      transform: translateY(-50%) translateX(-50%);
+}
+.resultado-button{
+  background-color:  #00897b;
+  color: white;
+  border-radius: 20px;
+  height: 30px;
+  width: 100%;
+}

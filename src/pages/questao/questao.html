@@ -23,35 +23,36 @@
 
     <ion-item class="questao-item">
       <ion-label class= "full-text" > a. {{a}}</ion-label>
-      <ion-radio value="a">  </ion-radio>
+      <ion-radio  (ionSelect)="respostaMarcada('a')">  </ion-radio>
     </ion-item>
 
     <ion-item class="questao-item">
       <ion-label class= "full-text" > b.{{b}}</ion-label>
-      <ion-radio value="b">  </ion-radio>
+      <ion-radio (ionSelect)="respostaMarcada('b')">  </ion-radio>
     </ion-item>
 
     <ion-item class="questao-item">
       <ion-label class= "full-text"> c.  {{c}} </ion-label>
-      <ion-radio value="c"></ion-radio>
+      <ion-radio  (ionSelect)="respostaMarcada('c')" ></ion-radio>
     </ion-item>
     <ion-item class="questao-item">
       <ion-label class= "full-text" > d. {{d}}</ion-label>
-      <ion-radio value="d"></ion-radio>
+      <ion-radio value="d" (ionSelect)="respostaMarcada('d')" ></ion-radio>
     </ion-item>
     <ion-item class="questao-item">
       <ion-label class= "full-text"> e. {{e}} </ion-label>
-      <ion-radio value="e"></ion-radio>
+      <ion-radio value="e" (ionSelect)="respostaMarcada('e')"></ion-radio>
     </ion-item>
   </ion-list>
 
     <button ion-button class="button-voltar" (click)="anteriorQuestao()" > <ion-icon name="arrow-back" color="white"> </ion-icon> </button>
 
-    <button ion-button class="button-proximo" (click)="proximaQuestao()" > <ion-icon name="arrow-forward" color="white"> </ion-icon> </button>
+    <button ion-button class="button-proximo" (click)="proximaQuestao()" [disabled]="final"> <ion-icon name="arrow-forward" color="white"> </ion-icon> </button>
 
     <br>
     <br>
     <button ion-button class="button-descartar" (click)="descartar()"> Descartar Simulado </button>
+    <button ion-button class="button-descartar"[disabled]="!final" (click)="resultado()"> Resultado </button>
 
 
 </ion-content>

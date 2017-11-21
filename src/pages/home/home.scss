@@ -10,8 +10,11 @@ page-home {
 .div-center{
 
 
-  position: relative;
+  position: absolute;
   top: 50%;
+  left: 50%;
+  width: 90%;
+  transform: translateY(-50%) translateX(-50%);
   //height: 5%;
 
 }

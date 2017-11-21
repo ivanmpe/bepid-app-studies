@@ -17,6 +17,18 @@ export class GabaritoProvider {
 
   private arrayKeyQuestoes = [];
   private qtdeQuestoes: number;
+  private qtdeAcertos: number = 0;
+
+
+
+  getQtdeAcertos(){
+    return this.qtdeAcertos;
+  }
+  setQtdeAcertos(n:number){
+      this.qtdeAcertos = n;
+  }
+
+
 
   getQtdeQuestoes(){
     return this.qtdeQuestoes;

@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import {  FiltrosPage } from '../pages/filtros/filtros';
 import { QuestaoPage } from '../pages/questao/questao';
+import { ResultadoPage } from '../pages/resultado/resultado';
 
 import { AngularFireDatabase } from 'angularfire2/database';
 import {AngularFireModule} from 'angularfire2';
@@ -33,6 +34,7 @@ var config = {
     HomePage,
     QuestaoPage,
     FiltrosPage,
+    ResultadoPage
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,10 @@ var config = {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage, QuestaoPage, FiltrosPage
+    HomePage,
+    QuestaoPage,
+    FiltrosPage,
+    ResultadoPage
   ],
   providers: [
     StatusBar,

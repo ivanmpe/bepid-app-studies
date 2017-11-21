@@ -4,15 +4,23 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>resultado</ion-title>
+  <ion-navbar hideBackButton="true" color="primary">
+    <ion-title> Resultado </ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding >
+<div class="div-resultado">
+  <p class="text-resultado" >Você teve {{acertos}} acertos, e {{erros}} erros, de um total de {{total}} questões. </p>
+  <div id="container" style="width:100%; height:200px;" ></div>
+  <button class="resultado-button" (click)="finalizar()" > Retornar ao inicio </button>
+
+</div>
 
 </ion-content>
