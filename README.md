@@ -15,7 +15,7 @@
 <h3>Assuntos:</h3>
 <ul>
 	  <li> Lógica de Programação </li>
-	  <li> Orientação a Objetivos </li>
+	  <li> Orientação a Objetos </li>
 	  <li> Programação estruturadas </li>
 	  <li> Estrutura de Dados </li>
 	  <li> Linguagem Java </li>
