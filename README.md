@@ -12,7 +12,7 @@
 <p>O aplicativo tem por objetivo do aplicativo é servir de material de estudo, tendo o foco nos estudantes que queiram ingressar no programa Apple Developer Academy, antigo Bepid. </p>
 
 <p>Aplicação desenvolvida possue interface fácil e amigável, com os variados assuntos pedidos na prova de seleção. </p>
-</h3>Assuntos:</h3>
+<h3>Assuntos:</h3>
 <ul>
 	  <li> Lógica de Programação </li>
 	  <li> Orientação a Objetivos </li>
